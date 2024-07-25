@@ -333,6 +333,12 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+
+/******************* Message error ********************/
+.error-message {
+  font-size: 0.85rem;
+  color: #ff0000;
+}
 /* custom select styles */
 .custom-select {
   position: relative;

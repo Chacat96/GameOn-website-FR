@@ -58,8 +58,6 @@
           <div class="modal-body">
             <form
               name="reserve"
-              action="index.html"
-              method="get"
               onsubmit="return validate();"
             >
               <div
@@ -72,6 +70,8 @@
                   name="first"
                   minlength="2"
                 /><br>
+                <!-- Erreur prénom -->
+                <span class="error-message" id="first-error"></span>  
               </div>
               <div
                 class="formData">
@@ -82,6 +82,8 @@
                   id="last"
                   name="last"
                 /><br>
+                <!--  Erreur nom -->
+                <span class="error-message" id="last-error"></span> 
               </div>
               <div
                 class="formData">
@@ -92,6 +94,8 @@
                   id="email"
                   name="email"
                 /><br>
+                 <!-- Erreur email -->
+                <span class="error-message" id="email-error"></span> 
               </div>
               <div
                 class="formData">
@@ -102,11 +106,15 @@
                   id="birthdate"
                   name="birthdate"
                 /><br>
+               <!-- Erreur date -->
+                <span class="error-message" id="birthdate-error"></span> 
               </div>
               <div
                 class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                 <!-- Erreur nombre -->
+                <span class="error-message" id="quantity-error"></span> 
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
@@ -178,6 +186,9 @@
                   Portland</label
                 >
               </div>
+
+              <!-- Erreur lieu -->
+              <span class="error-message" id="location-error"></span>
 
               <div
                 class="formData">
