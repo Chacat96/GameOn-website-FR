@@ -12,9 +12,15 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const form = document.querySelector("form[name='reserve']");
+const closeModal = document.querySelector(".close");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+
+// close modal event
+closeModal.addEventListener("click", () => {
+  modalbg.style.display = "none";
+});
 
 // launch modal form
 function launchModal() {
