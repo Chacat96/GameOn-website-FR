@@ -56,6 +56,15 @@ if (!emailPattern.test(email)) {
   isValid = false;
 }
 
+
+  // Validate birthday
+  const birthdate = document.getElementById("birthdate").value;
+  if (birthdate === "") {
+    document.getElementById("birthdate-error").textContent = "Vous devez entrer votre date de naissance.";
+    isValid = false;
+  }
+
+
 // Validate quantity
 const quantity = document.getElementById("quantity").value;
 if (quantity === "" || isNaN(quantity) || quantity < 0 || quantity > 99) {
@@ -85,4 +94,15 @@ form.addEventListener("submit", function(event) {
 if (!validate()) {
   event.preventDefault();
 }
+});
+
+// Prevent non-numeric input in quantity field
+document.getElementById("quantity").addEventListener("input", function(event) {
+  this.value = this.value.replace(/[^0-9]/g, '');
+});
+
+document.getElementById("quantity").addEventListener("keypress", function(event) {
+  if (event.key < '0' || event.key > '9') {
+    event.preventDefault();
+  }
 });
