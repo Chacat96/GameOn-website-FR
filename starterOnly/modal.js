@@ -27,6 +27,7 @@ function launchModal() {
 }// close modal event
 closeModal.addEventListener("click", () => {
   modalbg.style.display = "none";
+  window.location.reload();
 });
 
 // Attach validate function to form submit event

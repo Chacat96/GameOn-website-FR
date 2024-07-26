@@ -97,7 +97,6 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
   }
 } 
 
@@ -332,6 +331,22 @@ input[data-error]::after {
   color: #fff;
   cursor: pointer;
   border: 0;
+}
+
+.modal-confirmation {
+  margin: 5% auto;
+    animation-name: modalopen;
+    animation-duration: var(--modal-duration);
+    padding: 20px;
+    height: 800px;
+}
+
+.confirmation-texte {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  height: 95%;
+  font-size: 36px;
 }
 
 /******************* Message error ********************/
