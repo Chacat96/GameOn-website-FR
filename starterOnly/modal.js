@@ -10,22 +10,40 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
+const modalBody = document.querySelector(".modal-body");
 const formData = document.querySelectorAll(".formData");
 const form = document.querySelector("form[name='reserve']");
 const closeModal = document.querySelector(".close");
+const confirmation = document.querySelector (".modal-confirmation");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// close modal event
+// launch modal form
+function launchModal() {
+  modalbg.style.display = "block";
+  confirmation.style.display = "none";
+
+}// close modal event
 closeModal.addEventListener("click", () => {
   modalbg.style.display = "none";
 });
 
-// launch modal form
-function launchModal() {
-  modalbg.style.display = "block";
+// Attach validate function to form submit event
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+if (validate()) {
+  modalBody.style.display = "none";
+  confirmation.style.display = "block";
 }
+});
+
+// close modal confirmation
+confirmation.addEventListener("click", () => {
+  modalbg.style.display = "none";
+  window.location.reload();
+})
 
 //Form validation
 function validate() {
@@ -56,14 +74,12 @@ if (!emailPattern.test(email)) {
   isValid = false;
 }
 
-
   // Validate birthday
   const birthdate = document.getElementById("birthdate").value;
   if (birthdate === "") {
     document.getElementById("birthdate-error").textContent = "Vous devez entrer votre date de naissance.";
     isValid = false;
   }
-
 
 // Validate quantity
 const quantity = document.getElementById("quantity").value;
@@ -89,20 +105,4 @@ if (!termsAccepted) {
 return isValid;
 }
 
-// Attach validate function to form submit event
-form.addEventListener("submit", function(event) {
-if (!validate()) {
-  event.preventDefault();
-}
-});
 
-// Prevent non-numeric input in quantity field
-document.getElementById("quantity").addEventListener("input", function(event) {
-  this.value = this.value.replace(/[^0-9]/g, '');
-});
-
-document.getElementById("quantity").addEventListener("keypress", function(event) {
-  if (event.key < '0' || event.key > '9') {
-    event.preventDefault();
-  }
-});
