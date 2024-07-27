@@ -15,6 +15,7 @@ const formData = document.querySelectorAll(".formData");
 const form = document.querySelector("form[name='reserve']");
 const closeModal = document.querySelector(".close");
 const confirmation = document.querySelector (".modal-confirmation");
+const quantityInput = document.getElementById("quantity");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -89,6 +90,7 @@ if (quantity === "" || isNaN(quantity) || quantity < 0 || quantity > 99) {
   isValid = false;
 }
 
+
 // Validate location
 const location = document.querySelector('input[name="location"]:checked');
 if (!location) {
@@ -107,3 +109,14 @@ return isValid;
 }
 
 
+quantityInput.addEventListener("keypress", function(event) {
+  if (event.key < '0' || event.key > '9') {
+    event.preventDefault();
+  }
+});
+
+// Clean invalid input in quantity input
+quantityInput.addEventListener("input", function(event) {
+  const value = event.target.value;
+  event.target.value = value.replace(/[^0-9]/g, '');
+});
